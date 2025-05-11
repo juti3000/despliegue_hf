@@ -5,19 +5,10 @@ using MySql.Data.MySqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var mysqlConnectionString = new MySql.Data.MySqlClient.MySqlConnectionStringBuilder
-{
-    Server = Environment.GetEnvironmentVariable("db_host"),
-    Port = uint.Parse(Environment.GetEnvironmentVariable("db_port") ?? "3306"),
-    UserID = Environment.GetEnvironmentVariable("db_user"),
-    Password = Environment.GetEnvironmentVariable("db_password"),
-    Database = Environment.GetEnvironmentVariable("db_name"),
-    SslMode = MySql.Data.MySqlClient.MySqlSslMode.Required,
-}.ConnectionString;
-
+// Configuración del DbContext para MySQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
-        mysqlConnectionString,
+        builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 36))
     ));
 
