@@ -1,0 +1,113 @@
+﻿@model Habitforger.Models.Habito
+
+@{
+    ViewData["Title"] = "Detalles del Hábito";
+}
+
+<h1>Detalles del Hábito</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TituloHabito)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TituloHabito)
+            @if (Model.HacerPrivado)
+            {
+                <span class="badge bg-secondary ms-2">Privado</span>
+            }
+        </dd>
+
+        <dt class="col-sm-3">
+            Estado Actual
+        </dt>
+        <dd class="col-sm-9">
+            @if (Model.ObjetivoCumplido)
+            {
+                <span class="badge bg-success">Objetivo Cumplido</span>
+            }
+            else
+            {
+                <span class="badge bg-warning text-dark">En Progreso</span>
+            }
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RachaActual)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RachaActual) días
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.MaximaRacha)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.MaximaRacha) días
+        </dd>
+
+        <dt class="col-sm-3">
+            Progreso
+        </dt>
+        <dd class="col-sm-9">
+            <div class="d-flex align-items-center">
+                <div class="progress flex-grow-1" style="height: 25px;">
+                    <div class="progress-bar @(Model.ObjetivoCumplido ? "bg-success" : "bg-primary")"
+                         role="progressbar"
+                         style="width: @(Model.Progreso.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture))%"
+                         aria-valuenow="@(Model.Progreso)"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                    </div>
+                </div>
+                <span class="ms-2 @(Model.ObjetivoCumplido ? "text-success" : "")">
+                    @(Model.Progreso.ToString("0.00"))%
+                </span>
+            </div>
+        </dd>
+
+        <dt class="col-sm-3">
+            Estadísticas
+        </dt>
+        <dd class="col-sm-9">
+            <ul class="list-unstyled">
+                <li>✔ Completados: @Model.DiasCompletados días</li>
+                <li>✖ Fallados: @Model.DiasFallados días</li>
+                <li>📅 Creado el: @Model.FechaCreacion.ToShortDateString()</li>
+                <li>🔄 Última actualización: @Model.UltimaActualizacion.ToString("g")</li>
+            </ul>
+        </dd>
+
+        <dt class="col-sm-3">
+            Configuración
+        </dt>
+        <dd class="col-sm-9">
+            <ul class="list-unstyled">
+                <li>🎯 Objetivo: @Model.Objetivo días</li>
+                <li>
+                    🔄 Frecuencia:
+                    @switch (Model.Frecuencia)
+                    {
+                        case 1:
+                            <text>Diario</text>
+                            break;
+                        case 7:
+                            <text>Semanal</text>
+                            break;
+                        case 30:
+                            <text>Mensual</text>
+                            break;
+                        default:
+                            <text>Cada @Model.Frecuencia días</text>
+                            break;
+                    }
+                </li>
+            </ul>
+        </dd>
+    </dl>
+</div>
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+</div>

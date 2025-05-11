@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Habitforger.Models.Logro>
+@{
+    ViewData["Title"] = "Mis Logros";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <!-- Aumenté el ancho del contenedor -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Mis Logros</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var logro in Model)
+                        {
+                            <div class="col-md-6 mb-4">
+                                <!-- Aumenté el margen inferior -->
+                                <div class="card h-100 @(logro.Completado ? "border-success" : "border-light")">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start">
+                                            <!-- Imagen más grande con contenedor flexible -->
+                                            <div class="flex-shrink-0" style="width: 120px; height: 120px;">
+                                                <!-- Tamaño aumentado -->
+                                                <img src="~/images/@GetImageName(logro)"
+                                                     alt="@logro.NombreLogro"
+                                                     class="img-thumbnail h-100 w-100"
+                                                     style="object-fit: contain; background-color: #f8f9fa;"
+                                                     onerror="this.onerror=null; this.src='/images/default.jpeg';">
+                                            </div>
+
+                                            <div class="flex-grow-1 ms-3">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="card-title mb-1">@logro.NombreLogro</h4> <!-- Título más grande -->
+                                                    @if (logro.Completado)
+                                                    {
+                                                        <span class="badge bg-success fs-6">Completado</span> <!-- Badge más grande -->
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge bg-secondary fs-6">En progreso</span>
+                                                    }
+                                                </div>
+                                                <p class="card-text mt-2 fs-5">@logro.Descripcion</p> <!-- Texto más grande -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .card {
+            transition: all 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+        .img-thumbnail {
+            border-radius: 10px;
+            padding: 0.5rem;
+            border: 2px solid #dee2e6;
+        }
+
+        .badge {
+            padding: 0.5em 0.75em;
+        }
+    </style>
+}
+
+@functions {
+    public string GetImageName(Habitforger.Models.Logro logro)
+    {
+        return logro.NombreLogro switch
+        {
+            "Principiante" => logro.Completado ? "Logro1.jpeg" : "Logront1.jpeg",
+            "Primera victoria" => logro.Completado ? "Logro2.jpeg" : "Logront2.jpeg",
+            "Semana seria" => logro.Completado ? "Logro3.jpeg" : "Logront3.jpeg",
+            "Consistente" => logro.Completado ? "Logro4.jpeg" : "Logront1.jpeg",
+            "Maestro de la racha" => logro.Completado ? "Logro5.jpeg" : "Logront1.jpeg",
+            "Inquebrantable" => logro.Completado ? "Logro6.jpeg" : "Logront3.jpeg",
+            "Leyenda" => logro.Completado ? "Logro7.jpeg" : "Logront7.jpeg",
+            _ => "default.jpeg"
+        };
+    }
+}

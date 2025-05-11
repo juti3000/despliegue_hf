@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    body {
+        background-color: #e8f5e9; /* Fondo verde claro */
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .auth-buttons {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .logo {
+        max-width: 150px;
+        margin-bottom: 2rem;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .welcome-message {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        max-width: 600px;
+        width: 100%;
+    }
+</style>
+
+<div class="auth-buttons">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="user-info">
+            <span class="text-muted"><small>Hola, @User.Identity.Name</small></span>
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                <button type="submit" class="btn btn-sm btn-outline-danger">Cerrar sesión</button>
+            </form>
+        </div>
+    }
+    else
+    {
+        <div>
+            <a asp-controller="Account" asp-action="Login" class="btn btn-sm btn-primary">Iniciar sesión</a>
+            <a asp-controller="Account" asp-action="Register" class="btn btn-sm btn-secondary">Registrarse</a>
+        </div>
+    }
+</div>
+
+<div class="main-content text-center">
+    <img src="~/images/Icono.png" alt="Logo de la aplicación" class="logo" />
+
+    <div class="welcome-message">
+        <h1 class="display-4">Bienvenido a Habitforger</h1>
+        <p class="lead">La mejor aplicación para construir y mantener hábitos saludables</p>
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="mt-4">
+                <p>¿Listo para comenzar tu viaje de hábitos?</p>
+                <a asp-controller="Account" asp-action="Register" class="btn btn-success btn-lg">
+                    Empieza ahora
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="mt-4">
+                <a asp-controller="Habitos" asp-action="Index" class="btn btn-success btn-lg">
+                    Ver mis hábitos
+                </a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿@model Habitforger.Models.Estadisticas
+@{
+    ViewData["Title"] = "Mis Estadísticas";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Mis Estadísticas</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Hábitos Totales</h5>
+                                    <p class="display-4 text-center text-success">@Model.NumHabitTotal</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Hábitos Activos</h5>
+                                    <p class="display-4 text-center text-primary">@Model.NumHabitActivos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Hábitos Completados</h5>
+                                    <p class="display-4 text-center text-info">@Model.NumHabitCompletados</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Racha Máxima</h5>
+                                    <p class="display-4 text-center text-warning">@Model.RachaMaxTotNum</p>
+                                    <p class="text-muted text-center">@Model.RachaMaxTotTitulo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Racha Actual Más Larga</h5>
+                                    <p class="display-4 text-center text-warning">@Model.RachaMaxActNum</p>
+                                    <p class="text-muted text-center">@Model.RachaMaxActTitulo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Hábito con Mayor Progreso</h5>
+                                    <p class="display-4 text-center text-success">@Model.PorcentajeMayorAvance.ToString("0.0")%</p>
+                                    <p class="text-muted text-center">@Model.HabitoMayorAvance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
