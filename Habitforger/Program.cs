@@ -5,9 +5,21 @@ using MySql.Data.MySqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
-services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 23))));
+var mysqlConnectionString = new MySql.Data.MySqlClient.MySqlConnectionStringBuilder
+{
+    Server = Environment.GetEnvironmentVariable("DB_HOST"),
+    Port = uint.Parse(Environment.GetEnvironmentVariable("DB_PORT") ?? "3306"),
+    UserID = Environment.GetEnvironmentVariable("DB_USER"),
+    Password = Environment.GetEnvironmentVariable("DB_PASSWORD"),
+    Database = Environment.GetEnvironmentVariable("DB_NAME"),
+    SslMode = MySql.Data.MySqlClient.MySqlSslMode.Required,
+}.ConnectionString;
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(
+        mysqlConnectionString,
+        new MySqlServerVersion(new Version(8, 0, 36))
+    ));
 
 
 // Configuración de autenticación
