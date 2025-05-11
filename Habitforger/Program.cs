@@ -7,11 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 var mysqlConnectionString = new MySql.Data.MySqlClient.MySqlConnectionStringBuilder
 {
-    Server = Environment.GetEnvironmentVariable("DB_HOST"),
-    Port = uint.Parse(Environment.GetEnvironmentVariable("DB_PORT") ?? "3306"),
-    UserID = Environment.GetEnvironmentVariable("DB_USER"),
-    Password = Environment.GetEnvironmentVariable("DB_PASSWORD"),
-    Database = Environment.GetEnvironmentVariable("DB_NAME"),
+    Server = Environment.GetEnvironmentVariable("db_host"),
+    Port = uint.Parse(Environment.GetEnvironmentVariable("db_port") ?? "3306"),
+    UserID = Environment.GetEnvironmentVariable("db_user"),
+    Password = Environment.GetEnvironmentVariable("db_password"),
+    Database = Environment.GetEnvironmentVariable("db_name"),
     SslMode = MySql.Data.MySqlClient.MySqlSslMode.Required,
 }.ConnectionString;
 
