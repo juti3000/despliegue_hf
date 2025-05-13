@@ -27,11 +27,16 @@
 
             <div class="form-group mb-3">
                 <label asp-for="Frecuencia" class="control-label"></label>
-                <select asp-for="Frecuencia" class="form-control">
-                    <option value="1">Diario</option>
-                    <option value="7">Semanal</option>
-                    <option value="30">Mensual</option>
-                </select>
+                <div class="position-relative">
+                    <select asp-for="Frecuencia" class="form-control custom-dropdown">
+                        <option value="1">Diario</option>
+                        <option value="7">Semanal</option>
+                        <option value="30">Mensual</option>
+                    </select>
+                    <span class="dropdown-arrow">
+                        <i class="bi bi-chevron-down"></i>
+                    </span>
+                </div>
                 <span asp-validation-for="Frecuencia" class="text-danger"></span>
             </div>
 
@@ -50,8 +55,36 @@
     </div>
 </div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+@section Styles {
+    <style>
+        .custom-dropdown {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding-right: 2rem;
+            padding-left: 1rem;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .dropdown-arrow {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .custom-dropdown:focus {
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .bi-chevron-down {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+    </style>
 }

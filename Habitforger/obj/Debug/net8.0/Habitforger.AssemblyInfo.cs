@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Habitforger")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98d684aba4d9ad3c03eb67fb6a4e3cce25d3f27c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+599266e60a403d4a07d5c7733b6a1693517c93da")]
 [assembly: System.Reflection.AssemblyProductAttribute("Habitforger")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Habitforger")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

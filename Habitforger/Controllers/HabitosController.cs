@@ -272,6 +272,35 @@ namespace Habitforger.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [AllowAnonymous]
+        public async Task<IActionResult> Publicos(string titulo, string usuario, float? progreso)
+        {
+            var query = _context.Habitos
+                .Include(h => h.Usuario)
+                .Where(h => !h.HacerPrivado);
+
+            if (!string.IsNullOrEmpty(titulo))
+            {
+                query = query.Where(h => h.TituloHabito.Contains(titulo));
+            }
+
+            if (!string.IsNullOrEmpty(usuario))
+            {
+                query = query.Where(h => h.Usuario.NombreUsuario.Contains(usuario));
+            }
+
+            if (progreso.HasValue)
+            {
+                query = query.Where(h => h.Progreso >= progreso.Value);
+            }
+
+            var habitosPublicos = await query
+                .OrderByDescending(h => h.FechaCreacion)
+                .ToListAsync();
+
+
+            return View(habitosPublicos);
+        }
         private async Task VerificarLogrosRacha(int userId, int rachaActual)
         {
             var logros = await _context.Logros
