@@ -216,6 +216,7 @@ namespace Habitforger.Controllers
             return View(habito);
         }
 
+
         // POST: Habitos/RegistrarRespuesta
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -236,8 +237,12 @@ namespace Habitforger.Controllers
             habito.HoyRespondido = true;
             habito.UltimaActualizacion = DateTime.Now;
 
+            List<Logro> logrosCumplidos = new List<Logro>();
+
             if (cumplido)
             {
+                // Botón verde: Sumar 1 al RecuentoObjetivo
+                habito.RecuentoObjetivo += 1;
                 habito.RachaActual++;
                 habito.DiasCompletados++;
 
@@ -246,25 +251,40 @@ namespace Habitforger.Controllers
                     habito.MaximaRacha = habito.RachaActual;
                 }
 
-                await VerificarLogrosRacha(userId, habito.RachaActual);
+                var logrosRacha = await VerificarLogrosRacha(userId, habito.RachaActual);
+                logrosCumplidos.AddRange(logrosRacha);
             }
             else
             {
+                // Botón rojo: Restar 3 al RecuentoObjetivo (sin bajar de 0)
+                habito.RecuentoObjetivo = Math.Max(habito.RecuentoObjetivo - 3, 0);
                 habito.RachaActual = 0;
                 habito.DiasFallados++;
             }
 
-            habito.Progreso = (float)habito.DiasCompletados / habito.Objetivo * 100;
-            habito.Progreso = Math.Min(habito.Progreso, 100);
-            bool objetivoRecienCumplido = !habito.ObjetivoCumplido && habito.DiasCompletados >= habito.Objetivo;
-            habito.ObjetivoCumplido = habito.DiasCompletados >= habito.Objetivo;
+            // Cálculo del Progreso basado en RecuentoObjetivo/Objetivo
+            if (habito.RecuentoObjetivo <= habito.Objetivo)
+            {
+                habito.Progreso = (float)habito.RecuentoObjetivo / habito.Objetivo * 100;
+                habito.Progreso = Math.Min(habito.Progreso, 100);
+            }
+
+            bool objetivoRecienCumplido = !habito.ObjetivoCumplido && habito.RecuentoObjetivo >= habito.Objetivo;
+            habito.ObjetivoCumplido = habito.RecuentoObjetivo >= habito.Objetivo;
 
             _context.Update(habito);
             await _context.SaveChangesAsync();
 
             if (objetivoRecienCumplido)
             {
-                await VerificarLogrosCompletado(userId, habito);
+                var logrosCompletado = await VerificarLogrosCompletado(userId, habito);
+                logrosCumplidos.AddRange(logrosCompletado);
+            }
+
+            // Almacenar los nombres de los logros cumplidos para mostrar en la vista
+            if (logrosCumplidos.Any())
+            {
+                TempData["LogrosCumplidos"] = logrosCumplidos.Select(l => l.NombreLogro).ToArray();
             }
 
             await ActualizarEstadisticasUsuario(userId);
@@ -272,37 +292,9 @@ namespace Habitforger.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [AllowAnonymous]
-        public async Task<IActionResult> Publicos(string titulo, string usuario, float? progreso)
+        private async Task<List<Logro>> VerificarLogrosRacha(int userId, int rachaActual)
         {
-            var query = _context.Habitos
-                .Include(h => h.Usuario)
-                .Where(h => !h.HacerPrivado);
-
-            if (!string.IsNullOrEmpty(titulo))
-            {
-                query = query.Where(h => h.TituloHabito.Contains(titulo));
-            }
-
-            if (!string.IsNullOrEmpty(usuario))
-            {
-                query = query.Where(h => h.Usuario.NombreUsuario.Contains(usuario));
-            }
-
-            if (progreso.HasValue)
-            {
-                query = query.Where(h => h.Progreso >= progreso.Value);
-            }
-
-            var habitosPublicos = await query
-                .OrderByDescending(h => h.FechaCreacion)
-                .ToListAsync();
-
-
-            return View(habitosPublicos);
-        }
-        private async Task VerificarLogrosRacha(int userId, int rachaActual)
-        {
+            var logrosCumplidos = new List<Logro>();
             var logros = await _context.Logros
                 .Where(l => l.IdUsuario == userId)
                 .ToListAsync();
@@ -314,6 +306,7 @@ namespace Habitforger.Controllers
                 {
                     principiante.Completado = true;
                     _context.Update(principiante);
+                    logrosCumplidos.Add(principiante);
                 }
             }
 
@@ -324,6 +317,7 @@ namespace Habitforger.Controllers
                 {
                     semanaSerio.Completado = true;
                     _context.Update(semanaSerio);
+                    logrosCumplidos.Add(semanaSerio);
                 }
             }
 
@@ -334,6 +328,7 @@ namespace Habitforger.Controllers
                 {
                     consistente.Completado = true;
                     _context.Update(consistente);
+                    logrosCumplidos.Add(consistente);
                 }
             }
 
@@ -344,15 +339,19 @@ namespace Habitforger.Controllers
                 {
                     maestro.Completado = true;
                     _context.Update(maestro);
+                    logrosCumplidos.Add(maestro);
                 }
             }
 
             await _context.SaveChangesAsync();
             await VerificarLogroLeyenda(userId);
+
+            return logrosCumplidos;
         }
 
-        private async Task VerificarLogrosCompletado(int userId, Habito habito)
+        private async Task<List<Logro>> VerificarLogrosCompletado(int userId, Habito habito)
         {
+            var logrosCumplidos = new List<Logro>();
             var logros = await _context.Logros
                 .Where(l => l.IdUsuario == userId)
                 .ToListAsync();
@@ -362,6 +361,7 @@ namespace Habitforger.Controllers
             {
                 primeraVictoria.Completado = true;
                 _context.Update(primeraVictoria);
+                logrosCumplidos.Add(primeraVictoria);
             }
 
             if (habito.DiasFallados == 0)
@@ -371,15 +371,19 @@ namespace Habitforger.Controllers
                 {
                     inquebrantable.Completado = true;
                     _context.Update(inquebrantable);
+                    logrosCumplidos.Add(inquebrantable);
                 }
             }
 
             await _context.SaveChangesAsync();
             await VerificarLogroLeyenda(userId);
+
+            return logrosCumplidos;
         }
 
-        private async Task VerificarLogroLeyenda(int userId)
+        private async Task<List<Logro>> VerificarLogroLeyenda(int userId)
         {
+            var logrosCumplidos = new List<Logro>();
             var logros = await _context.Logros
                 .Where(l => l.IdUsuario == userId && l.NombreLogro != "Leyenda")
                 .ToListAsync();
@@ -396,8 +400,11 @@ namespace Habitforger.Controllers
                     leyenda.Completado = true;
                     _context.Update(leyenda);
                     await _context.SaveChangesAsync();
+                    logrosCumplidos.Add(leyenda);
                 }
             }
+
+            return logrosCumplidos;
         }
 
         private async Task ActualizarEstadisticasUsuario(int userId)

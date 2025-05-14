@@ -1,26 +1,24 @@
 using Microsoft.EntityFrameworkCore;
 using Habitforger.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using MySql.Data.MySqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ConfiguraciÃ³n del DbContext para MySQL
+// Configuración del DbContext para MySQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 36))
     ));
 
-
-// ConfiguraciÃ³n de autenticaciÃ³n
+// Configuración de autenticación
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/Account/Login";
         options.AccessDeniedPath = "/Account/AccessDenied";
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // Tiempo de expiraciÃ³n de la cookie
-        options.SlidingExpiration = true; // Renovar la cookie mientras estÃ© activa
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // Tiempo de expiración de la cookie
+        options.SlidingExpiration = true; // Renovar la cookie mientras esté activa
     });
 
 // Otros servicios
@@ -28,7 +26,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// ConfiguraciÃ³n del pipeline de la aplicaciÃ³n
+// Configuración del pipeline de la aplicación
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();

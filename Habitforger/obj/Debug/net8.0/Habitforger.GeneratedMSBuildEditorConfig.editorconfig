@@ -9,85 +9,79 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Habitforger
 build_property.RootNamespace = Habitforger
-build_property.ProjectDir = C:\Users\juang\source\repos\HabitForge\Habitforger\
+build_property.ProjectDir = C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\juang\source\repos\HabitForge\Habitforger
+build_property.MSBuildProjectDirectory = C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 8.0
-build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Account/Estadisticas.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Account/Estadisticas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFc3RhZGlzdGljYXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Account/Login.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Account/Logros.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Account/Logros.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dyb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Account/Register.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Habitos/Create.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Habitos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRvc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Habitos/Details.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Habitos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRvc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Habitos/Edit.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Habitos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRvc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Habitos/Index.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Habitos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Habitos/Publicos.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRvc1xQdWJsaWNvcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Home/Index.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Home/Privacy.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Shared/Error.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Usuarios/Create.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Usuarios/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Usuarios/Index.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Usuarios/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/_ViewImports.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/_ViewStart.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juang/source/repos/HabitForge/Habitforger/Views/Shared/_Layout.cshtml]
+[C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-x3lbkr4h7c
