@@ -21,16 +21,17 @@
 <!-- Buscador -->
 <form asp-action="Index" method="get" class="mb-4">
     <div class="input-group">
-        <input type="text" class="form-control"
-               name="searchString"
+        <input type="text" class="form-control" name="searchString"
                placeholder="Buscar por nombre de hábito..."
                value="@ViewData["CurrentFilter"]" />
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-outline-primary">
-                <i class="bi bi-search"></i> Buscar
-            </button>
-            <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
-        </div>
+
+        <button type="submit" class="btn btn-primary d-flex align-items-center px-3">
+            <i class="bi bi-search me-2"></i> Buscar
+        </button>
+
+        <a asp-action="Index" class="btn btn-outline-secondary d-flex align-items-center px-3">
+            <i class="bi bi-x-circle me-2"></i> Limpiar
+        </a>
     </div>
 </form>
 
@@ -38,83 +39,145 @@
     <a asp-action="Create" class="btn btn-primary">Crear Nuevo Hábito</a>
 </p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Hábito</th>
-            <th>Racha Actual</th>
-            <th>Progreso</th>
-            <th>¿Hoy?</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<!-- Sección de hábitos en curso -->
+<h2 class="mt-4">Hábitos en curso</h2>
+
+@if (!Model.Any(h => !h.ObjetivoCumplido))
+{
+    <p class="text-muted">No tienes hábitos activos en este momento.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TituloHabito)
-                    @if (item.HacerPrivado)
-                    {
-                        <span class="badge bg-secondary">Privado</span>
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RachaActual) días
-                </td>
-                <td>
-                    <div class="d-flex align-items-center">
-                        <div class="progress flex-grow-1" style="height: 20px;">
-                            <div class="progress-bar @(item.ObjetivoCumplido ? "bg-success" : "bg-primary")"
-                                 role="progressbar"
-                                 style="width: @(item.Progreso.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture))%"
-                                 aria-valuenow="@(item.Progreso)"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100">
-                            </div>
-                        </div>
-                        <span class="ms-2 @(item.ObjetivoCumplido ? "text-success" : "")">
-                            @(item.Progreso.ToString("0.00"))%
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    @if (!item.HoyRespondido)
-                    {
-                        <form asp-action="RegistrarRespuesta" method="post" class="d-inline">
-                            <input type="hidden" name="id" value="@item.IdHabito" />
-                            <input type="hidden" name="cumplido" value="true" />
-                            @Html.AntiForgeryToken()
-                            <button type="submit" class="btn btn-success btn-sm">✔ Sí</button>
-                        </form>
-                        <form asp-action="RegistrarRespuesta" method="post" class="d-inline">
-                            <input type="hidden" name="id" value="@item.IdHabito" />
-                            <input type="hidden" name="cumplido" value="false" />
-                            @Html.AntiForgeryToken()
-                            <button type="submit" class="btn btn-danger btn-sm">✖ No</button>
-                        </form>
-                    }
-                    else
-                    {
-                        <span class="text-success">✔ Respondido</span>
-                    }
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.IdHabito" class="btn btn-info btn-sm" title="Detalles">
-                        <i class="bi bi-eye"></i>
-                    </a>
-                    <a asp-action="Edit" asp-route-id="@item.IdHabito" class="btn btn-warning btn-sm" title="Editar">
-                        <i class="bi bi-pencil"></i>
-                    </a>
-                    <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este hábito?');">
-                        <input type="hidden" name="id" value="@item.IdHabito" />
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </form>
-                </td>
+                <th>Hábito</th>
+                <th>Racha Actual</th>
+                <th>Progreso</th>
+                <th>¿Hoy completado?</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(h => !h.ObjetivoCumplido))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TituloHabito)
+                        @if (item.HacerPrivado)
+                        {
+                            <span class="badge bg-secondary">Privado</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RachaActual) días
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="progress flex-grow-1" style="height: 20px;">
+                                <div class="progress-bar @(item.ObjetivoCumplido ? "bg-success" : "bg-primary")"
+                                     role="progressbar"
+                                     style="width: @(item.Progreso.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture))%"
+                                     aria-valuenow="@(item.Progreso)"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                            <span class="ms-2 @(item.ObjetivoCumplido ? "text-success" : "")">
+                                @(item.Progreso.ToString("0.00"))%
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        @if (!item.HoyRespondido)
+                        {
+                            <form asp-action="RegistrarRespuesta" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@item.IdHabito" />
+                                <input type="hidden" name="cumplido" value="true" />
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-success btn-sm">✔ Sí</button>
+                            </form>
+                            <form asp-action="RegistrarRespuesta" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@item.IdHabito" />
+                                <input type="hidden" name="cumplido" value="false" />
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-danger btn-sm">✖ No</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <span class="text-success">✔ Respondido</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.IdHabito" class="btn btn-info btn-sm" title="Detalles">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@item.IdHabito" class="btn btn-warning btn-sm" title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este hábito?');">
+                            <input type="hidden" name="id" value="@item.IdHabito" />
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Sección de hábitos completados -->
+<h2 class="mt-5">Hábitos completados</h2>
+
+@if (!Model.Any(h => h.ObjetivoCumplido))
+{
+    <p class="text-muted">Aún no has completado ningún hábito.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Hábito</th>
+                <th>Racha Final</th>
+                <th>Progreso</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(h => h.ObjetivoCumplido))
+            {
+                <tr class="table-success">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TituloHabito)
+                        @if (item.HacerPrivado)
+                        {
+                            <span class="badge bg-secondary">Privado</span>
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.RachaActual) días</td>
+                    <td>@(item.Progreso.ToString("0.00"))%</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.IdHabito" class="btn btn-info btn-sm" title="Detalles">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@item.IdHabito" class="btn btn-warning btn-sm" title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este hábito?');">
+                            <input type="hidden" name="id" value="@item.IdHabito" />
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
