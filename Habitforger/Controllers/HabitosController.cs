@@ -216,6 +216,7 @@ namespace Habitforger.Controllers
             return View(habito);
         }
 
+
         // POST: Habitos/RegistrarRespuesta
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -291,6 +292,7 @@ namespace Habitforger.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+<<<<<<< HEAD
         [AllowAnonymous]
         public async Task<IActionResult> Publicos(string titulo, string usuario, float? progreso)
         {
@@ -320,6 +322,8 @@ namespace Habitforger.Controllers
 
             return View(habitosPublicos);
         }
+=======
+>>>>>>> f07e8a5af3f606437b24e949f5229e2ca876cbf3
         private async Task<List<Logro>> VerificarLogrosRacha(int userId, int rachaActual)
         {
             var logrosCumplidos = new List<Logro>();

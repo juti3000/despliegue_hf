@@ -1,17 +1,6 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\Icono.png
-wwwroot\images\Logro1.jpeg
-wwwroot\images\Logro2.jpeg
-wwwroot\images\Logro3.jpeg
-wwwroot\images\Logro4.jpeg
-wwwroot\images\Logro5.jpeg
-wwwroot\images\Logro6.jpeg
-wwwroot\images\Logro7.jpeg
-wwwroot\images\Logront1.jpeg
-wwwroot\images\Logront2.jpeg
-wwwroot\images\Logront3.jpeg
-wwwroot\images\Logront7.jpeg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

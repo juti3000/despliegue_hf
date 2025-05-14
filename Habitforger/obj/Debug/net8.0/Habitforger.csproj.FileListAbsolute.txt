@@ -508,6 +508,7 @@ C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\Microsoft.En
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\MySqlConnector.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
@@ -519,6 +520,7 @@ C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\System.Compo
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\System.Composition.TypedParts.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\System.Drawing.Common.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\System.Security.Permissions.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\System.Windows.Extensions.dll
@@ -574,11 +576,16 @@ C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\ru\Microsoft
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\obj\Debug\net8.0\Habitforger.csproj.AssemblyReference.cache
 C:\Users\juang\source\repos\HabitForge\Habitforger\obj\Debug\net8.0\Habitforger.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\juang\source\repos\HabitForge\Habitforger\obj\Debug\net8.0\Habitforger.AssemblyInfoInputs.cache
@@ -606,6 +613,7 @@ C:\Users\juang\source\repos\HabitForge\Habitforger\obj\Debug\net8.0\refint\Habit
 C:\Users\juang\source\repos\HabitForge\Habitforger\obj\Debug\net8.0\Habitforger.pdb
 C:\Users\juang\source\repos\HabitForge\Habitforger\obj\Debug\net8.0\Habitforger.genruntimeconfig.cache
 C:\Users\juang\source\repos\HabitForge\Habitforger\obj\Debug\net8.0\ref\Habitforger.dll
+C:\Users\juang\source\repos\HabitForge\Habitforger\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\bin\Debug\net8.0\appsettings.json
 C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\bin\Debug\net8.0\Habitforger.staticwebassets.runtime.json
@@ -723,6 +731,7 @@ C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\obj\Debug\ne
 C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\obj\Debug\net8.0\Habitforger.pdb
 C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\obj\Debug\net8.0\Habitforger.genruntimeconfig.cache
 C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\obj\Debug\net8.0\ref\Habitforger.dll
+<<<<<<< HEAD
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\Google.Protobuf.dll
 C:\Users\juang\source\repos\HabitForge\Habitforger\bin\Debug\net8.0\K4os.Compression.LZ4.dll
@@ -895,3 +904,5 @@ C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\bin\Debug\ne
 C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
 C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Usuario\Desktop\UNI\3\3C2\Proyectos\HabitForge\Habitforger\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+=======
+>>>>>>> f07e8a5af3f606437b24e949f5229e2ca876cbf3

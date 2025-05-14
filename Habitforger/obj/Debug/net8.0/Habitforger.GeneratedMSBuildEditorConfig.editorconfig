@@ -50,10 +50,13 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+<<<<<<< HEAD
 [C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Habitos/Publicos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRvc1xQdWJsaWNvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+=======
+>>>>>>> f07e8a5af3f606437b24e949f5229e2ca876cbf3
 [C:/Users/Usuario/Desktop/UNI/3/3C2/Proyectos/HabitForge/Habitforger/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

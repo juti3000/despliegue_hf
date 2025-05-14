@@ -6,175 +6,108 @@
 
 <h1>Detalles del Hábito</h1>
 
-<div class="custom-card">
-    <div class="custom-card-header">
-        <h3>Resumen del Hábito</h3>
-    </div>
-    <div class="custom-card-body">
-        <div class="row">
-            <!-- Título del Hábito -->
-            <div class="col-md-6">
-                <p><strong>@Html.DisplayNameFor(model => model.TituloHabito)</strong>: @Html.DisplayFor(model => model.TituloHabito)</p>
-                @if (Model.HacerPrivado)
-                {
-                    <span class="badge bg-secondary">Privado</span>
-                }
-            </div>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TituloHabito)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TituloHabito)
+            @if (Model.HacerPrivado)
+            {
+                <span class="badge bg-secondary ms-2">Privado</span>
+            }
+        </dd>
 
-            <!-- Estado Actual -->
-            <div class="col-md-6">
-                <p>
-                    <strong>Estado Actual:</strong>
-                    @if (Model.ObjetivoCumplido)
-                    {
-                        <span class="badge bg-success">Objetivo Cumplido</span>
-                    }
-                    else
-                    {
-                        <span class="badge bg-warning">En Progreso</span>
-                    }
-                </p>
-            </div>
-        </div>
+        <dt class="col-sm-3">
+            Estado Actual
+        </dt>
+        <dd class="col-sm-9">
+            @if (Model.ObjetivoCumplido)
+            {
+                <span class="badge bg-success">Objetivo Cumplido</span>
+            }
+            else
+            {
+                <span class="badge bg-warning text-dark">En Progreso</span>
+            }
+        </dd>
 
-        <hr />
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RachaActual)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RachaActual) días
+        </dd>
 
-        <!-- Racha Actual y Máxima -->
-        <div class="row">
-            <div class="col-md-6">
-                <p><strong>Racha Actual:</strong> @Html.DisplayFor(model => model.RachaActual) días</p>
-            </div>
-            <div class="col-md-6">
-                <p><strong>Máxima Racha:</strong> @Html.DisplayFor(model => model.MaximaRacha) días</p>
-            </div>
-        </div>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.MaximaRacha)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.MaximaRacha) días
+        </dd>
 
-        <!-- Barra de Progreso -->
-        <div class="row">
-            <div class="col-md-12">
-                <p><strong>Progreso:</strong></p>
-                <div class="progress">
-                    <div class="progress-bar @(Model.ObjetivoCumplido ? "bg-success" : "bg-primary")" style="width: @(Model.Progreso)%;">
-                        @Model.Progreso% Completado
+        <dt class="col-sm-3">
+            Progreso
+        </dt>
+        <dd class="col-sm-9">
+            <div class="d-flex align-items-center">
+                <div class="progress flex-grow-1" style="height: 25px;">
+                    <div class="progress-bar @(Model.ObjetivoCumplido ? "bg-success" : "bg-primary")"
+                         role="progressbar"
+                         style="width: @(Model.Progreso.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture))%"
+                         aria-valuenow="@(Model.Progreso)"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
                     </div>
                 </div>
+                <span class="ms-2 @(Model.ObjetivoCumplido ? "text-success" : "")">
+                    @(Model.Progreso.ToString("0.00"))%
+                </span>
             </div>
-        </div>
+        </dd>
 
-        <hr />
+        <dt class="col-sm-3">
+            Estadísticas
+        </dt>
+        <dd class="col-sm-9">
+            <ul class="list-unstyled">
+                <li>✔ Completados: @Model.DiasCompletados días</li>
+                <li>✖ Fallados: @Model.DiasFallados días</li>
+                <li>📅 Creado el: @Model.FechaCreacion.ToShortDateString()</li>
+                <li>🔄 Última actualización: @Model.UltimaActualizacion.ToString("g")</li>
+            </ul>
+        </dd>
 
-        <!-- Estadísticas -->
-        <div class="row">
-            <div class="col-md-12">
-                <h5>Estadísticas</h5>
-                <ul class="list-unstyled">
-                    <li><i class="bi bi-check-circle"></i> Completados: @Model.DiasCompletados días</li>
-                    <li><i class="bi bi-x-circle"></i> Fallados: @Model.DiasFallados días</li>
-                    <li><i class="bi bi-calendar-date"></i> Creado el: @Model.FechaCreacion.ToShortDateString()</li>
-                    <li><i class="bi bi-arrow-repeat"></i> Última actualización: @Model.UltimaActualizacion.ToString("g")</li>
-                </ul>
-            </div>
-        </div>
-
-        <hr />
-
-        <!-- Configuración -->
-        <div class="row">
-            <div class="col-md-12">
-                <h5>Configuración</h5>
-                <ul class="list-unstyled">
-                    <li><i class="bi bi-target"></i> Objetivo: @Model.Objetivo días</li>
-                    <li>
-                        <i class="bi bi-clock"></i> Frecuencia:
-                        @switch (Model.Frecuencia)
-                        {
-                            case 1:
-                                <text>Diario</text>
-                                break;
-                            case 7:
-                                <text>Semanal</text>
-                                break;
-                            case 30:
-                                <text>Mensual</text>
-                                break;
-                            default:
-                                <text>Cada @Model.Frecuencia días</text>
-                                break;
-                        }
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        <dt class="col-sm-3">
+            Configuración
+        </dt>
+        <dd class="col-sm-9">
+            <ul class="list-unstyled">
+                <li>🎯 Objetivo: @Model.Objetivo días</li>
+                <li>
+                    🔄 Frecuencia:
+                    @switch (Model.Frecuencia)
+                    {
+                        case 1:
+                            <text>Diario</text>
+                            break;
+                        case 7:
+                            <text>Semanal</text>
+                            break;
+                        case 30:
+                            <text>Mensual</text>
+                            break;
+                        default:
+                            <text>Cada @Model.Frecuencia días</text>
+                            break;
+                    }
+                </li>
+            </ul>
+        </dd>
+    </dl>
 </div>
-
 <div class="mt-4">
     <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
 </div>
-
-@section Styles {
-    <style>
-        /* Estilo de la tarjeta general */
-        .custom-card {
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            background-color: #fff;
-        }
-
-        .custom-card-header {
-            background-color: #f7f7f7;
-            padding: 15px;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .custom-card-body {
-            padding: 20px;
-        }
-
-        /* Estilo de la barra de progreso */
-        .progress {
-            height: 20px;
-            border-radius: 50px;
-            background-color: #e9ecef;
-        }
-
-        .progress-bar {
-            height: 100%;
-            line-height: 20px;
-            border-radius: 50px;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Listas y íconos */
-        .list-unstyled li {
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .bi {
-            margin-right: 10px;
-            font-size: 18px;
-            color: #6c757d;
-        }
-
-        /* Badges de estado */
-        .badge.bg-success {
-            background-color: #28a745;
-        }
-
-        .badge.bg-warning {
-            background-color: #ffc107;
-        }
-
-        .badge.bg-secondary {
-            background-color: #6c757d;
-        }
-
-        /* Botón de volver */
-        .btn-secondary {
-            margin-top: 20px;
-        }
-    </style>
-}

@@ -7,31 +7,24 @@
 <h1>Editar Hábito</h1>
 
 <hr />
-
-<div class="custom-card">
-    <div class="custom-card-header">
-        <h3>Modificar Hábito</h3>
-    </div>
-    <div class="custom-card-body">
+<div class="row">
+    <div class="col-md-6">
         <form asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdHabito" />
 
-            <!-- Título del Hábito -->
             <div class="form-group mb-3">
-                <label asp-for="TituloHabito" class="control-label">Nombre del Hábito</label>
+                <label asp-for="TituloHabito" class="control-label">Nombre del hábito</label>
                 <input asp-for="TituloHabito" class="form-control" />
                 <span asp-validation-for="TituloHabito" class="text-danger"></span>
             </div>
 
-            <!-- Objetivo -->
             <div class="form-group mb-3">
                 <label asp-for="Objetivo" class="control-label">Objetivo (días totales)</label>
                 <input asp-for="Objetivo" class="form-control" min="1" />
                 <span asp-validation-for="Objetivo" class="text-danger"></span>
             </div>
 
-            <!-- Frecuencia -->
             <div class="form-group mb-3">
                 <label asp-for="Frecuencia" class="control-label">Frecuencia</label>
                 <select asp-for="Frecuencia" class="form-control">
@@ -42,124 +35,51 @@
                 <span asp-validation-for="Frecuencia" class="text-danger"></span>
             </div>
 
-            <!-- Privacidad -->
             <div class="form-group form-check mb-3">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="HacerPrivado" /> @Html.DisplayNameFor(model => model.HacerPrivado)
                 </label>
             </div>
 
-            <!-- Botones -->
-            <div class="form-group mb-3 d-flex justify-content-between">
+            <div class="form-group mb-3">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Estadísticas actuales</h5>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-6">Días completados:</dt>
+                    <dd class="col-sm-6">@Model.DiasCompletados</dd>
+
+                    <dt class="col-sm-6">Días fallados:</dt>
+                    <dd class="col-sm-6">@Model.DiasFallados</dd>
+
+                    <dt class="col-sm-6">Racha actual:</dt>
+                    <dd class="col-sm-6">@Model.RachaActual días</dd>
+
+                    <dt class="col-sm-6">Máxima racha:</dt>
+                    <dd class="col-sm-6">@Model.MaximaRacha días</dd>
+
+                    <dt class="col-sm-6">Progreso:</dt>
+                    <dd class="col-sm-6">@Model.Progreso.ToString("0.00")%</dd>
+
+                    <dt class="col-sm-6">Creado el:</dt>
+                    <dd class="col-sm-6">@Model.FechaCreacion.ToShortDateString()</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="custom-card mt-4">
-    <div class="custom-card-header">
-        <h5>Estadísticas actuales</h5>
-    </div>
-    <div class="custom-card-body">
-        <dl class="row">
-            <dt class="col-sm-6">Días completados:</dt>
-            <dd class="col-sm-6">@Model.DiasCompletados</dd>
-
-            <dt class="col-sm-6">Días fallados:</dt>
-            <dd class="col-sm-6">@Model.DiasFallados</dd>
-
-            <dt class="col-sm-6">Racha actual:</dt>
-            <dd class="col-sm-6">@Model.RachaActual días</dd>
-
-            <dt class="col-sm-6">Máxima racha:</dt>
-            <dd class="col-sm-6">@Model.MaximaRacha días</dd>
-
-            <dt class="col-sm-6">Progreso:</dt>
-            <dd class="col-sm-6">@Model.Progreso.ToString("0.00")%</dd>
-
-            <dt class="col-sm-6">Creado el:</dt>
-            <dd class="col-sm-6">@Model.FechaCreacion.ToShortDateString()</dd>
-        </dl>
-    </div>
-</div>
-
-@section Styles {
-    <style>
-        /* Estilo de la tarjeta general */
-        .custom-card {
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            background-color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .custom-card-header {
-            background-color: #f7f7f7;
-            padding: 15px;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .custom-card-body {
-            padding: 20px;
-        }
-
-        /* Campos del formulario */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-control {
-            border-radius: 8px;
-            box-shadow: none;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-            .form-control:focus {
-                border-color: #007bff;
-                box-shadow: 0 0 5px rgba(38, 143, 255, 0.5);
-            }
-
-        /* Botones */
-        .btn-primary, .btn-secondary {
-            width: 48%; /* Asegura que los botones ocupen el 48% del espacio */
-            padding: 10px;
-            font-size: 1.1rem;
-        }
-
-        .btn-primary {
-            background-color: #2e7d32;
-            border-color: #2e7d32;
-        }
-
-            .btn-primary:hover {
-                background-color: #218838;
-                border-color: #1e7e34;
-            }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
-
-        /* Estadísticas de la tarjeta */
-        dl.row dt {
-            font-weight: bold;
-        }
-
-        dl.row dd {
-            margin-bottom: 10px;
-        }
-
-        /* Estilo de las estadísticas */
-        dl.row {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-    </style>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
