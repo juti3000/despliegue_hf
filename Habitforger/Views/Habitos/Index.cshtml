@@ -3,7 +3,19 @@
 @{
     ViewData["Title"] = "Mis Hábitos";
 }
-
+@if (TempData["LogrosCumplidos"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">¡Logros desbloqueados!</h4>
+        <ul>
+            @foreach (var logro in (string[])TempData["LogrosCumplidos"])
+            {
+                <li>Logro cumplido: @logro</li>
+            }
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 <h1>Mis Hábitos</h1>
 
 <!-- Buscador -->
